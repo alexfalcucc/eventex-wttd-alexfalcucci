@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 #import os
 #BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+from decouple import config
+from dj_database_url import parse as db_url
 from unipath import Path
 BASE_DIR = Path(__file__).parent
 import dj_database_url
@@ -21,14 +23,13 @@ import dj_database_url
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ohj0ot6(!m%p@eg*&x=vsn_amp(lu!eq_l@5a!k8d^5oh6bij*'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
+TEMPLATE_DEBUG = DEBUG
 
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.localhost','127.0.0.1','.herokuapp.com']
 
 
 # Application definition
@@ -71,8 +72,10 @@ DATABASES = {
 }'''
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///' + BASE_DIR.child('db.sqlite3'))
+    'default': config(
+        'DATABASE_URL',
+        default='sqlite:///' + BASE_DIR.child('db.sqlite3'),
+        cast=db_url),
 
 }
 
