@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+	{% block content %}
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-12 section">
+                <h1 class="section-heading">Bem-vindo ao EventeX!</h1>
+                <p class="lead section-lead">O evento mais sensacional do ano depois do Dev in Rio!<br/> Você não pode perder esta oportunidade!<br/><a href="/inscricao/"><b style="color: #2C6AC7;">Inscreva-se já!</b></a></p><br/>
+                <p class="section-paragraph">Para dúvidas e mais informações entre em contato com <a href="">eventex@eventex.com.br</a></p>
+            </div>
+        </div>
+    </div>
+	<form action="." method="POST" accept-charset="utf-8"> {% csrf_token %}
+		<p>
+			<label for="{{form.name.id_for_label}}">{{form.name.label}} </label>
+			{{form.name}}
+			{{form.name.erros}}
+			
+		</p>
+		<p>
+			<label for="{{form.cpf.id_for_label}}">{{form.cpf.label}} </label>
+			{{form.cpf}}
+			{{form.cpf.erros}}
+			
+		</p>
+		<p>
+			<label for="{{form.email.id_for_label}}">{{form.email.label}} </label>
+			{{form.email}}
+			{{form.email.erros}}
+			
+		</p>
+		<p>
+			<label for="{{form.phone.id_for_label}}">{{form.phone.label}} </label>
+			{{form.phone}}
+			{{form.phone.erros}}
+			
+		</p>
+		<input type="submit" name="enviar" value="Enviar!" class="button">
+	</form>
+	{% endblock content %}
+</body>
+</html>

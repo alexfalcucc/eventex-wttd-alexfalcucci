@@ -31,6 +31,10 @@ TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['.localhost','127.0.0.1','.herokuapp.com']
 
+#para ligar e desligar, consecutivamete:
+#heroku config:set DEBUG=True
+#heroku config:set DEBUG=False
+
 
 # Application definition
 
@@ -43,6 +47,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # apps
     'eventex.core',
+    'eventex.subscriptions',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,6 +62,9 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'eventex.urls'
 
 WSGI_APPLICATION = 'eventex.wsgi.application'
+
+#MANAGER
+# alias manage='python $VIRTUAL_ENV/manage.py'
 
 
 # Database
