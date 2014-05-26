@@ -7,7 +7,7 @@ from eventex.subscriptions.models import Subscription
 # Create your views here.
 
 
-''' 
+
 def subscribe(request):
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
@@ -22,8 +22,9 @@ def subscribe(request):
                                     {'form':form})
     else:
             return render(request, 'subscriptions/subscription_form.html', 
-                                    {'form':SubscriptionForm()})'''
+                                    {'form':SubscriptionForm()})
 # Refatorando a View subscribe.
+"""
 def subscribe(request):
     if request.method == 'POST':
         return create(request)
@@ -39,7 +40,7 @@ def create(request):
         return render(request, 'subscriptions/subscription_form.html', 
                                 {'form': form})
     obj = form.save()
-    return HttpResponseRedirect('/inscricao/%d/' %obj.pk)
+    return HttpResponseRedirect('/inscricao/%d/' %obj.pk)"""
 
 def detail(request, pk):
     subscription = get_object_or_404(Subscription, pk=pk)
