@@ -4,11 +4,13 @@ from django.test import TestCase
 from eventex.subscriptions.forms import SubscriptionForm
 from eventex.subscriptions.models import Subscription
 
+from django.core.urlresolvers import reverse as r
+
 # Create your tests here.
 
 class SubscribeTest(TestCase):
         def setUp(self):
-            self.resp = self.client.get('/inscricao/')
+            self.resp = self.client.get(r('subscriptions:subscribe'))
 
         def test_get(self):
             '''GET /inscricao/ retornará code 200.'''
@@ -21,7 +23,7 @@ class SubscribeTest(TestCase):
         def test_html(self):
             ''' Html contem inputs types '''
             self.assertContains(self.resp, '<form')
-            self.assertContains(self.resp, '<input', 6)
+            self.assertContains(self.resp, '<input', 5)
             self.assertContains(self.resp, 'type="text"', 3)
             self.assertContains(self.resp, 'type="email"')
             self.assertContains(self.resp, 'type="submit"')
@@ -37,7 +39,7 @@ class SubscribePostTest(TestCase):
 		def setUp(self):
 			data = dict(name='Alexsander Falcucci', cpf="12345678901",
 						email='alex.falcucci@gmail.com', phone='35-99913899')
-			self.resp = self.client.post('/inscricao/', data)
+			self.resp = self.client.post(r('subscriptions:subscribe'), data)
 		def test_post(self):
 			# Validando e redirecionando para /inscricao/1/
 
@@ -50,7 +52,7 @@ class SubscribeInvalidPostTest(TestCase):
 		def setUp(self):
 			data = dict(name='Alexsander Falcucci', cpf="000000000012",
 						email='alex.falcucci@gmail.com', phone='35-99913899')
-			self.resp = self.client.post('/inscricao/', data)
+			self.resp = self.client.post(r('subscriptions:subscribe'), data)
 		def test_post(self):
 			# Post invalido.
 			self.assertEqual(200, self.resp.status_code)

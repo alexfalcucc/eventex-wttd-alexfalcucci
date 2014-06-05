@@ -8,19 +8,19 @@
 
 		<div class="row">
       <div class="col-sm-6" style="margin: 30px 0px 40px; color: #FFF;">
-        <h1 style="font-family: 'Ubuntu', Arial, sans-serif;">Parabéns {{subscription.name}}!</h1>
+        <h1 style="font-family: 'Ubuntu', Arial, sans-serif;">Parabéns {{ subscription.name }}!</h1>
         <p>Sua inscrição foi realizada em
-		{{subscription.created_at|date:"d/m/Y"}}.
+		{{subscription.created_at|date:"d/m/Y" }}.
 		</p>
 		<p>Em breve, entraremos em contato pelo 
 		{% if subscription.phone %}
-			telefone {{subscription.phone}}.
+			telefone {{ subscription.phone }}.
 		{% else %}
-			e-mail {{subscription.email}}
+			e-mail {{ subscription.email }}
 		{% endif %}
 
 		</p>
-		<a href="{% url 'home' %}" class="btn btn-default">Voltar ao site</a>
+		<a href="{% url 'core:home' %}" class="btn btn-default">Voltar ao site</a>
         </div>
         </div>
      </div>

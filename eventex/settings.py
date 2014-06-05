@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # dispositivos
     'bootstrapform',
+    'south',
     # apps
     'eventex.core',
     'eventex.subscriptions',
@@ -67,6 +68,10 @@ WSGI_APPLICATION = 'eventex.wsgi.application'
 
 #MANAGER
 # alias manage='python $VIRTUAL_ENV/manage.py'
+
+# Usar o South para preparar o banco nos testes? True: sim. (default) - False: naoo! USE O syncdb.
+
+SOUTH_TESTS_MIGRATE = False
 
 
 # Database
@@ -95,7 +100,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
