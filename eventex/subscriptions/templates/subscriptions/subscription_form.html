@@ -12,29 +12,31 @@
    
 
   
-	<form action="." method="POST" class="form" accept-charset="utf-8"> {% csrf_token %}
+	<form action="." method="POST" class="form" accept-charset="utf-8"> 
+		{% csrf_token %}
+		{{ form.non_field_errors }}
 		<p>
 			<label for="{{form.name.id_for_label}}"> </label>
 			{{form.name|bootstrap}}
-			{{form.name.erros}}
+			{{form.name.errors}}
 			
 		</p>
 		<p>
 			
 			{{form.cpf|bootstrap}}
-			{{form.cpf.erros}}
+			{{form.cpf.errors}}
 			
 		</p>
 		<p>
 			
 			{{form.email|bootstrap}}
-			{{form.email.erros}}
+			{{form.email.errors}}
 			
 		</p>
 		<p>
 			
 			{{form.phone|bootstrap}}
-			{{form.phone.erros}}
+			{{form.phone.errors}}
 			
 		</p>
 		
@@ -47,5 +49,3 @@
 </div>
  	
 	{% endblock content %}
-</body>
-</html>
