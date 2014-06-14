@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from eventex.core.models import Speaker, Contact
+from eventex.core.models import Speaker, Contact, Talk
 
 class Contactinline(admin.TabularInline):
 		model = Contact
@@ -13,3 +13,4 @@ class SpeakerAdmin(admin.ModelAdmin):
 		prepopulated_fields = {'slug': ('name',)}
 
 admin.site.register(Speaker, SpeakerAdmin)
+admin.site.register(Talk)
