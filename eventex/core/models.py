@@ -47,7 +47,7 @@ class Talk(models.Model):
 
         objects = PeriodManager()
 
-        class Meta:
+        class Meta:            
             verbose_name = _('palestra')
             verbose_name_plural = _('palestras')
 
@@ -57,3 +57,17 @@ class Talk(models.Model):
         # TODO: use reverse.
         def get_absolute_url(self): 
             return '/palestras/%d/' % self.pk
+
+class Course(Talk):
+        slots = models.IntegerField(_('vagas'))
+        notes = models.TextField(_(u'observações'))
+
+        objects = PeriodManager()
+
+#Exemplo Proxy inheritance
+class CodingCourse(Course):
+        class Meta:
+            proxy = True
+
+        def do_some_python_stuff(self):
+            return "Let's hack! at %s" % self.title
