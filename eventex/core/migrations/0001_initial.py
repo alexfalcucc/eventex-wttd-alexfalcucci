@@ -8,35 +8,50 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Subscription'
-        db.create_table(u'subscriptions_subscription', (
+        # Adding model 'Speaker'
+        db.create_table(u'core_speaker', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('cpf', self.gf('django.db.models.fields.CharField')(unique=True, max_length=11)),
-            ('email', self.gf('django.db.models.fields.EmailField')(max_length=75, blank=True)),
-            ('phone', self.gf('django.db.models.fields.CharField')(max_length=20, blank=True)),
-            ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-            ('paid', self.gf('django.db.models.fields.BooleanField')(default=False)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=255)),
+            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
+            ('url', self.gf('django.db.models.fields.URLField')(max_length=200)),
+            ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
         ))
-        db.send_create_signal(u'subscriptions', ['Subscription'])
+        db.send_create_signal(u'core', ['Speaker'])
+
+        # Adding model 'Contact'
+        db.create_table(u'core_contact', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('speaker', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['core.Speaker'])),
+            ('kind', self.gf('django.db.models.fields.CharField')(max_length=1)),
+            ('value', self.gf('django.db.models.fields.CharField')(max_length=255)),
+        ))
+        db.send_create_signal(u'core', ['Contact'])
 
 
     def backwards(self, orm):
-        # Deleting model 'Subscription'
-        db.delete_table(u'subscriptions_subscription')
+        # Deleting model 'Speaker'
+        db.delete_table(u'core_speaker')
+
+        # Deleting model 'Contact'
+        db.delete_table(u'core_contact')
 
 
     models = {
-        u'subscriptions.subscription': {
-            'Meta': {'ordering': "['created_at']", 'object_name': 'Subscription'},
-            'cpf': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '11'}),
-            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
+        u'core.contact': {
+            'Meta': {'object_name': 'Contact'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'paid': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'phone': ('django.db.models.fields.CharField', [], {'max_length': '20', 'blank': 'True'})
+            'kind': ('django.db.models.fields.CharField', [], {'max_length': '1'}),
+            'speaker': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['core.Speaker']"}),
+            'value': ('django.db.models.fields.CharField', [], {'max_length': '255'})
+        },
+        u'core.speaker': {
+            'Meta': {'object_name': 'Speaker'},
+            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
+            'url': ('django.db.models.fields.URLField', [], {'max_length': '200'})
         }
     }
 
-    complete_apps = ['subscriptions']
+    complete_apps = ['core']
