@@ -3,6 +3,19 @@ EventeX - Sistema de Eventos elaborado no curso <a href="http://welcometothedjan
 
 >Projeto voltado ao módulo acadêmico de Python & Django. 
 
+#### Download:
+
+    git clone https://github.com/alexfalcucc/eventex-wttd-alexfalcucci.git
+    pip install -r requirements.txt
+    
+#### Alias (linux):
+
+    alias manage='python $VIRTUAL_ENV/manage.py'
+    
+#### Syncdb:
+
+    manage syncdb --migrate
+    
 Licença de software
 ----
 
