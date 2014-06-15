@@ -26,7 +26,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="{% url 'subscriptions:subscribe' %}" class="nav-link">Inscrição</a></li>
                 <li><a href="{% url 'core:talk_list' %}" class="nav-link">Palestras</a></li>
-                <li><a href="/admin/" class="nav-link">Login</a></li
+                <li><a href="/admin/" class="nav-link">Login</a></li>
                </ul>
               </div> <!-- /.navbar-collapse -->
              </div> <!-- /.container -->
@@ -52,8 +52,8 @@
               </div> <!-- /.container -->
             </footer>
 
-    <script src="./Strapped — Coverstrap Template_files/jquery.js"></script>
-    <script src="./Strapped — Coverstrap Template_files/bootstrap.min.js"></script>
+    <!--<script src="{% static 'js/jquery.js' %}"></script>-->
+    <!--<script src="{% static 'js//bootstrap.min.js' %}"></script>-->
     <script>
       $(".nav-link").click(function(e) {
         e.preventDefault();
@@ -77,8 +77,8 @@
     <script src="{% static 'js/jquery-1.10.2.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
 
-    <script src="/core/static/js/jquery.min.js"></script>
-    <script src="/core/static/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
