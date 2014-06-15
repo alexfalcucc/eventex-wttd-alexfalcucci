@@ -47,9 +47,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # dispositivos
     'bootstrapform',
-    'south',
+    #'south',
     # apps
-    'eventex.core',
+    #'eventex.core',
     'eventex.subscriptions',
     "eventex.myauth",
 )
