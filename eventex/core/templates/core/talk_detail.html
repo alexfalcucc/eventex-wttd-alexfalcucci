@@ -1,24 +1,29 @@
 {% extends 'base.html' %}
 {% load youtube slideshare %}
+{% load staticfiles %}
 
 {% block content %}
+
+	<<div class="container">
+      <div class="col-sm-10" style="margin-top: 100px;">
 	
 	<h4>{{ talk.title }}</h4>
 	{% for speaker in talk.speakers.all %}
 		<h5>
-			<a href="{{ speaker.get_absolute_url }}"
-			title="{{ speaker.description|truncatewords:20 }}">
+			<a href="{{ speaker.get_absolute_url }}" title="{{ speaker.description|truncatewords:20 }}">
 			{{speaker.name}}
 			</a>
 		</h5>
 	{% endfor %}
 	<p>{{talk.description}}</p>
 	{% for video in talk.videos %}
-		<p>{% youtube vide.media_id %}</p>
-		{% endfor %}
+		<p>{% youtube video.media_id %}</p>
+	{% endfor %}
 
-		{% for slide in talk.slides %}
-			<p>{% slideshare slide.media_id slide.title %}</p>
-		{% endfor %}
+	{% for slide in talk.slides %}
+		<p>{% slideshare slide.media_id slide.title %}</p>
+	{% endfor %}
 
+		</div>
+	</div>
 {% endblock content %}

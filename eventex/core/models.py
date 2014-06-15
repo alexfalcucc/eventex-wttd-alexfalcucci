@@ -59,10 +59,12 @@ class Talk(models.Model):
             return ('core:talk_detail', (), {'pk':self.pk})
 
         @property
-        def slides(self): return self.media_set.filter(kind='SL')
+        def slides(self): 
+            return self.media_set.filter(kind='SL')
         
         @property
-        def videos(self): return self.media_set.filter(kind='YT')
+        def videos(self): 
+            return self.media_set.filter(kind='YT')
 
 class Course(Talk):
         slots = models.IntegerField(_('vagas'))
@@ -89,5 +91,6 @@ class Media(models.Model):
         title = models.CharField(_(u'título'), max_length=255)
         media_id = models.CharField(_('ref'), max_length=255)
 
-        def __unicode__(self): return u'%s - %s' % (self.talk.title, self.title)
+        def __unicode__(self): 
+            return u'%s - %s' % (self.talk.title, self.title)
         

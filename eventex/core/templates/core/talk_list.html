@@ -1,19 +1,25 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
 
-		<h3>Manhã</h3>	
+<div class="container">
+      <div class="col-sm-10" style="margin-top: 100px;">
+
+		<h2>Manhã</h2>	
 		{% for talk in morning_talks %}
 			{% include 'core/talk_list_snippet.html' %}
 		{% empty %}
 		 	<p>Não existem palestras durante a manhã.</p>
 		{% endfor %}
 			
-		<h3>Tarde</h3>
+		<h2>Tarde</h2>
 		{% for talk in afternoon_talks %}
 		  {% include 'core/talk_list_snippet.html' %}
 		{% empty %}
 		      <p>Não existem palestras durante a tarde.</p>
 		{% endfor %}
+		</div>
+		</div>
 			   
 {% endblock content %}

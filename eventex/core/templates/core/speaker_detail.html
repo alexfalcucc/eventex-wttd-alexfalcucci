@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
-	<h4><a href="{{ speaker.url }}">{{ speaker.name }}</a></h4>
-	<p>{{ speaker.description }}</p>
+
+<div class="container">
+      <div class="col-sm-10" style="margin-top: 100px;">
+		<h4><a href="{{ speaker.url }}">{{ speaker.name }}</a></h4>
+		<p>{{ speaker.description }}</p>
+		</div>
+	</div>
 {% endblock content %}

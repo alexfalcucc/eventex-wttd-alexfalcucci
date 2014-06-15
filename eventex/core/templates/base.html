@@ -1,53 +1,74 @@
 {% load staticfiles %}
 {% load bootstrap %}
 <!DOCTYPE html>
-
-<html lang="en"><head>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Eventex!</title>
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <title>Eventex</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="http://coverstrap.com/previews/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://coverstrap.com/previews/css/strapped.css" rel="stylesheet">
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  <style type="text/css"></style></head>
+ 
 
-    <!-- Custom CSS for the 'Full Width Pics' Template -->
-    <link href="{% static 'css/full-width-pics.css' %}" rel="stylesheet">
-</head>
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand nav-link" href="/">EventeX</a>
+        </div> <!-- /.navbar-header -->
 
-<body>
-    <div class="full-width-image-1">
-
-        <div class="logo-wrapper">
-            <img class="img-responsive" src="{% static 'img/onlinelogomaker-051814-2112.png' %}">
-        </div>
-
-    </div>
-    
-    <!-- /full-width-image-1 -->
+                <div class="navbar-collapse navbar-ex1-collapse collapse" style="height: 0px;">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'subscriptions:subscribe' %}" class="nav-link">Inscrição</a></li>
+                <li><a href="{% url 'core:talk_list' %}" class="nav-link">Palestras</a></li>
+                <li><a href="/admin/" class="nav-link">Login</a></li
+               </ul>
+              </div> <!-- /.navbar-collapse -->
+             </div> <!-- /.container -->
+            </nav> <!-- /.navbar -->
 
     {% block content %}
     {% endblock content %}
+         
+             
+            <footer style="margin: 10em 0 0;">
+            <div class="container">
+              <div class="container clearfix">
+                <p class="pull-left">
+                  Copyright &copy; 2014 - Alexsander Falcucci<br/>
+                            <a href="https://www.facebook.com/alexsanderfalcucciGuitarBand" target="__blank">Facebook</a> | 
+                            <a href="https://twitter.com/AlexFalcucci" target="__blank">Twitter</a>
+                            | 
+                            <a href="https://github.com/alexfalcucc" target="__blank">Github</a>
+                </p>
+                <p class="pull-right">
+                  A <a href="http://djangoproject.com/">Django</a> site.
+                </p>
+              </div> <!-- /.container -->
+            </footer>
 
-    <hr/>
+    <script src="./Strapped — Coverstrap Template_files/jquery.js"></script>
+    <script src="./Strapped — Coverstrap Template_files/bootstrap.min.js"></script>
+    <script>
+      $(".nav-link").click(function(e) {
+        e.preventDefault();
+        var link = $(this);
+        var href = link.attr("href");
+        $("html,body").animate({scrollTop: $(href).offset().top - 80}, 500);
+        link.closest(".navbar").find(".navbar-toggle:not(.collapsed)").click();
+      });
+    </script>
+  
 
-    <!-- FOOTER -->
-    <div class="container">
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; 2014 - Alexsander Falcucci<br/>
-                    <a href="https://www.facebook.com/alexsanderfalcucciGuitarBand" target="__blank">Facebook</a> | 
-                    <a href="https://twitter.com/AlexFalcucci" target="__blank">Twitter</a>
-                    | 
-                    <a href="https://github.com/alexfalcucc" target="__blank">Github</a>
-                </div>
-            </div>
-        </footer>
-    </div>
+
+    
+
+    
 
     
     <!-- /container -->
@@ -61,7 +82,4 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
-
-
-
-</body></html>
+</html>

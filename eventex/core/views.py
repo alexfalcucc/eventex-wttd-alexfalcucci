@@ -10,7 +10,7 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
-def home(request): return render(request, 'index.html')
+def home(request): return render(request, 'index2.html')
 
 def speaker_detail(request, slug): 
 	speaker = get_object_or_404(Speaker, slug=slug)

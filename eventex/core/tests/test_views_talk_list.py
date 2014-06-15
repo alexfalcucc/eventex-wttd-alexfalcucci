@@ -34,7 +34,7 @@ class TalkListTest(TestCase):
 			self.assertContains(self.resp, u'/palestras/2/')
 			self.assertContains(self.resp, u'/palestrantes/alexsander-falcucci', 2)
 			self.assertContains(self.resp, u'Passionate Software Developer!!!', 2)
-			self.assertContains(self.resp, u'Alexsander Falcucci', 3)
+			self.assertContains(self.resp, u'Alexsander Falcucci', 3	)
 			self.assertContains(self.resp, u'Descrição da palestra', 2)		
 
 		def test_morning_talks_in_context(self):

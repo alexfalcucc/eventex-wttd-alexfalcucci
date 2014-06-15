@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap %}
+
+{% block content %}
+    <div id="top" class="jumbotron">
+      <div class="container">
+        <h1>Bem-vindo ao EventeX!</h1>
+        <h2>O evento mais sensacional do ano depois do Dev in Rio!<br/> Você não pode perder esta oportunidade!</h2>
+        <p><a href="{% url 'subscriptions:subscribe' %}" class="btn btn-warning btn-lg">Inscreva-se já! <span class="glyphicon glyphicon-circle-arrow-right"></span></a></p>
+        <br><br>
+        <h3>Para dúvidas e mais informações entre em contato com <a href="">eventex@eventex.com.br</a></h3>
+      </div> <!-- /.container -->
+    </div> <!-- /.jumbotron -->
+
+
+    
+
+              <h2 id="benefits" class="subhead">Palestrantes</h3>
+              <div class="row">
+                <div class="col-md-4 col-sm-6 benefit">
+                  <div class="benefit-ball" style="background-color: #FFF;">
+                  <a href="{% url 'core:talk_list' %}">
+                    <img src="{% static 'img/henrique.jpg' %}"></img>
+                  </div>
+                  </a>
+                  <h3>Henrique Bastos</h3>
+                  <p>I'm a passionate software developer interested in ways of using technology to improve people lives. I'm an idrealist working on turning ideals into actions</p>
+                </div> <!-- /.benefit -->
+
+                <div class="col-md-4 col-sm-6 benefit">
+                  <div class="benefit-ball" style="background-color: #FFF;">
+                  <a href="{% url 'core:talk_list' %}">
+                    <img src="{% static 'img/alex.jpg' %}"></img>
+                    </a>
+                  </div>
+                  <h3>Alexsander Falcucci</h3>
+                  <p>Graduating Systems Analysis at Unifran. Besides being a geek in love with all that is code, I also enjoy cooking and drinking spresso. :-) </p>
+                </div> <!-- /.benefit -->
+
+                <div class="col-md-4 col-sm-6 benefit">
+                  <div class="benefit-ball" style="background-color: #FFF;">
+                  <a href="{% url 'core:talk_list' %}">
+                    <img src="{% static 'img/mascote.jpg' %}"></img>
+                    </a>
+                  </div>
+                  <h3 style="margin-top: -5px;">Mascote</h3>
+                  <p>I love my dog.</p>
+                </div> <!-- /.benefit -->
+
+                
+
+            
+
+              
+
+            </div> <!-- /.container -->
+{% endblock content %}
+
+
+
+    
