@@ -13,8 +13,7 @@ class Speaker(models.Model):
         url = models.URLField(_('Url'))
         description = models.TextField(_(u'Descrição'), blank=True)
 
-        def __unicode__(self): 
-            return self.name
+        def __unicode__(self): return self.name
 
         @models.permalink
         def get_absolute_url(self): 
@@ -36,8 +35,7 @@ class Contact(models.Model):
         phones = KindContactManager('P')
         faxes = KindContactManager('F')
 
-        def __unicode__(self): 
-            return self.value
+        def __unicode__(self):return self.value
 
 class Talk(models.Model):
         title = models.CharField(_(u'Título'), max_length=200)
@@ -51,20 +49,16 @@ class Talk(models.Model):
             verbose_name = _('palestra')
             verbose_name_plural = _('palestras')
 
-        def __unicode__(self): 
-            return self.title       
+        def __unicode__(self): return self.title       
 
         @models.permalink
-        def get_absolute_url(self): 
-            return ('core:talk_detail', (), {'pk':self.pk})
+        def get_absolute_url(self): return ('core:talk_detail', (), {'pk':self.pk})
 
         @property
-        def slides(self): 
-            return self.media_set.filter(kind='SL')
+        def slides(self): return self.media_set.filter(kind='SL')
         
         @property
-        def videos(self): 
-            return self.media_set.filter(kind='YT')
+        def videos(self): return self.media_set.filter(kind='YT')
 
 class Course(Talk):
         slots = models.IntegerField(_('vagas'))

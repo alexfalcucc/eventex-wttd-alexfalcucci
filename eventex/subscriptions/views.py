@@ -26,10 +26,8 @@ def subscribe(request):
 # Refatorando a View subscribe.
 
 def subscribe(request):
-    if request.method == 'POST':
-        return create(request)
-    else:
-        return new(request)
+    if request.method == 'POST': return create(request)
+    else: return new(request)
 
 def new(request):
     return render(request, 'subscriptions/subscription_form.html', 

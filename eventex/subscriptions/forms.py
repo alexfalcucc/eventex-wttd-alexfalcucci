@@ -91,4 +91,3 @@ class SubscriptionForm(forms.ModelForm):
         #cpf = forms.CharField(label=_('CPF'), max_length=11)
         #email = forms.EmailField(label=_('Email'))
         #phone = forms.CharField(label=_('Telefone'))
-        

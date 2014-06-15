@@ -27,9 +27,5 @@ def talk_list(request):
 
 def talk_detail(request, pk):
 	talk = get_object_or_404(Talk, pk=pk)
-	context = {
-		'talk':talk,
-		#'slides':talk.media_set.filter(kind='SL'), ->refatorando
-		#'videos':talk.media_set.filter(kind='YT'),
-	}
+	context = {'talk':talk,}
 	return render(request, 'core/talk_detail.html', context)
