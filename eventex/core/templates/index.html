@@ -17,32 +17,82 @@
               <div class="row">
                 <div class="col-md-4 col-sm-6 benefit">
                   <div class="benefit-ball" style="background-color: #FFF;">
-                  <a href="{% url 'core:talk_list' %}">
-                    <img src="{% static 'img/henrique.jpg' %}"></img>
+                  <img src="{% static 'img/henrique.jpg' %}" style="border: solid;border-color: black;"></img>
                   </div>
-                  </a>
-                  <h3>Henrique Bastos</h3>
-                  <p>I'm a passionate software developer interested in ways of using technology to improve people lives. I'm an idrealist working on turning ideals into actions</p>
+                  {% for talk in get_query_set %}
+                      {% ifequal talk.title "Lifestyle Business e o Ecossistema Python" %}
+                 <h4>
+                    <a href="{{talk.get_absolute_url}}">
+                        {{ talk.title }}
+                    </a>
+                    <br><br><strong>Horário: {{ talk.start_time }}</strong>
+                  </h4>
+                          {% for speaker in talk.speakers.all %}
+                              <h5>
+                                 <a href="{{speaker.get_absolute_url}}"
+                                  title="{{speaker.description|truncatewords:30}}">       
+                                  <h3>{{ speaker.name }}</h3>
+                              </a>
+                              </h5>
+                          {% endfor %}
+                  <h4>Descrição da palestra</h4>
+                  <p>{{ talk.description }}</p>
+                     {% endifequal %}
+                  {% endfor %}
                 </div> <!-- /.benefit -->
-
+                
                 <div class="col-md-4 col-sm-6 benefit">
                   <div class="benefit-ball" style="background-color: #FFF;">
-                  <a href="{% url 'core:talk_list' %}">
-                    <img src="{% static 'img/alex.jpg' %}"></img>
+                  <img src="{% static 'img/alex.jpg' %}" style="border: solid;border-color: black;"></img>
+                </div>
+                  {% for talk in get_query_set %}
+                      {% ifequal talk.title "Expressões Regulares" %}
+                 <h4>
+                    <a href="{{talk.get_absolute_url}}">
+                        {{ talk.title }}
                     </a>
-                  </div>
-                  <h3>Alexsander Falcucci</h3>
-                  <p>Graduating Systems Analysis at Unifran. Besides being a geek in love with all that is code, I also enjoy cooking and drinking spresso. :-) </p>
+                    <br><br><strong>Horário: {{ talk.start_time }}</strong>
+                  </h4>
+                            {% for speaker in talk.speakers.all %}
+                                <h5>
+                                   <a href="{{speaker.get_absolute_url}}"
+                                    title="{{speaker.description|truncatewords:30}}">       
+                                    <h3>{{ speaker.name }}</h3>
+                                </a>
+                                </h5>
+                                {% endfor %}
+                                <h4>Descrição da palestra</h4>
+                                <p>{{ talk.description }}</p>
+                                    {% endifequal %}
+                            {% endfor %}
+                  
                 </div> <!-- /.benefit -->
-
                 <div class="col-md-4 col-sm-6 benefit">
                   <div class="benefit-ball" style="background-color: #FFF;">
-                  <a href="{% url 'core:talk_list' %}">
-                    <img src="{% static 'img/mascote.jpg' %}"></img>
-                    </a>
+                  <img src="{% static 'img/mascote.jpg' %}" style="border: solid;border-color: black;border-radius: inherit;"></img>
+                    
                   </div>
-                  <h3 style="margin-top: -5px;">Mascote</h3>
-                  <p>I love my dog.</p>
+                  {% for talk in get_query_set %}
+                      {% ifequal talk.title "Como retirar pulgas" %}
+                  <h4>
+                    <a href="{{talk.get_absolute_url}}">
+                        {{ talk.title }}
+                    </a>
+                    <br><br><strong>Horário: {{ talk.start_time }}</strong>
+                  </h4>
+                          {% for speaker in talk.speakers.all %}
+                                  <h5>
+                                     <a href="{{speaker.get_absolute_url}}"
+                                      title="{{speaker.description|truncatewords:30}}">       
+                                      <h3>{{ speaker.name }}</h3>
+                                  </a>
+                                  </h5>
+                          {% endfor %}
+                  <h4>Descrição da palestra</h4>
+                  <p>{{ talk.description }}</p>
+                      {% endifequal %}
+                  {% endfor %}
+                  
                 </div> <!-- /.benefit --> 
        </div> <!-- /.container -->
 {% endblock content %}]
