@@ -15,6 +15,11 @@ EventeX - Sistema de Eventos elaborado no curso <a href="http://welcometothedjan
 #### Syncdb:
 
     manage syncdb --migrate
+Demo:
+----
+    
+    http://eventex-wttd-alexfalcucci.herokuapp.com/
+    
     
 Licença de software
 ----
